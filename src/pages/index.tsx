@@ -2,7 +2,7 @@ import { Card, CardBody } from '@paljs/ui/Card';
 import { Button } from '@paljs/ui/Button';
 import { useRouter } from 'next/router';
 import { useSingleUploadMutation } from 'generated';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Index = () => {
   const router = useRouter();
@@ -18,13 +18,12 @@ const Index = () => {
 
 const UploadFile = () => {
   const [progress, setProgress] = useState<number>(0);
-  console.log(`🇻🇳 [LOG]: UploadFile -> progress`, progress);
-  const [singleUpload, { loading, error }] = useSingleUploadMutation();
+  const [singleUpload, { error }] = useSingleUploadMutation();
+  const abortRef = useRef<any>(null);
 
   const onChange = async ({ target: { validity, files } }: React.ChangeEvent<HTMLInputElement>) => {
     try {
       if (validity.valid && files && files[0]) {
-        let abort: any;
         await singleUpload({
           variables: {
             file: files[0],
@@ -35,15 +34,15 @@ const UploadFile = () => {
                 setProgress(ev.loaded / ev.total);
               },
               onAbortPossible: (abortHandler: any) => {
-                abort = abortHandler;
+                abortRef.current = abortHandler;
               },
             },
           },
         }).catch((err) => console.log(err));
 
         return () => {
-          if (abort) {
-            abort();
+          if (abortRef.current) {
+            abortRef.current?.();
           }
         };
       }
@@ -52,13 +51,23 @@ const UploadFile = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  // if (loading) return <div>Loading...</div>;
   if (error) return <div>{JSON.stringify(error, null, 2)}</div>;
 
   return (
-    <>
+    <div>
       <input type="file" required onChange={onChange} />
-    </>
+      <div>progress: {(progress * 100).toFixed(2)}%</div>
+      <Button
+        onClick={() => {
+          if (abortRef.current) {
+            abortRef.current?.();
+          }
+        }}
+      >
+        Abort
+      </Button>
+    </div>
   );
 };
 
