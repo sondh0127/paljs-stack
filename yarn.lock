@@ -1812,12 +1812,12 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@paljs/admin@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@paljs/admin/-/admin-2.2.1.tgz#7884726cf42f9dc5b50f67410e8ff6bf6fb89bea"
-  integrity sha512-dOrt0uIFktBtO+473ZA3ydr1W2xvilF6vBa6fAIlauwTDAJ+eVS8mK4z4Vmo3Yvqdy1Q4BaFImZBxYAetKvJNw==
+"@paljs/admin@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@paljs/admin/-/admin-2.3.0.tgz#6cd64014b321911c25a202d2330c84b2f26258c7"
+  integrity sha512-V70vzOpxH/bUoWjD8165v/nQa/a7wmXxZr4kXjGIIgLgog3JkSjYJ4hP7eOhGjHHgzOL15bYBnqqCfRg0RWmWQ==
   dependencies:
-    "@paljs/types" "^2.2.1"
+    "@paljs/types" "^2.3.0"
     dompurify "^2.1.1"
     moment "2.26.0"
     prettier "2.0.5"
@@ -1835,21 +1835,21 @@
   dependencies:
     eva-icons "^1.1.3"
 
-"@paljs/nexus@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@paljs/nexus/-/nexus-2.2.1.tgz#df1cb7d524be8a710f51324ef71e35c8e3def377"
-  integrity sha512-nJC0I0hquNMuC705na7gHhNfYyJp7PA0ZTdQIhgwjSxjXkhNtuWpRy90o2vkAJ4fWly0vqmrtucG5sjQpK46jg==
+"@paljs/nexus@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@paljs/nexus/-/nexus-2.3.0.tgz#11686fb9c56132ec1a17fd5ac5b972457b786b3a"
+  integrity sha512-o8AAy8Il5UbnJvyyrNuAWBg8HI3m42vbwKuhdoChGvuuyWt2u0Y8KWDb7o1Vpw3QvsKSphxzb4RwV90kZakuYQ==
   dependencies:
-    "@paljs/plugins" "^2.2.1"
+    "@paljs/plugins" "^2.3.0"
     fs-extra "^9.0.1"
     lowdb "^1.0.0"
 
-"@paljs/plugins@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@paljs/plugins/-/plugins-2.2.1.tgz#675baade13079c974131f766225fc10d60100550"
-  integrity sha512-7PqpsxqWMO7JZt/mF+2X0DiXBrO1gNgiYdUGEU6QRnZKOgVGXX7Zi4FYaZ6mtCl2lhwkK27/xG5QoYq09RjMiQ==
+"@paljs/plugins@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@paljs/plugins/-/plugins-2.3.0.tgz#dacb2a0122f73469267196a695a9891f3b7d2e8f"
+  integrity sha512-Ip2+FFqgzvAXJej/q06d/YdoszSfOPnnMnW/UDAZTWl4ARJcP6rWBeRQyZC9WLQEl4WIvpBpdVll7viTDh+ZJw==
   dependencies:
-    "@paljs/types" "^2.2.1"
+    "@paljs/types" "^2.3.0"
     graphql-fields "2.0.3"
     graphql-tag "2.10.3"
 
@@ -1858,10 +1858,10 @@
   resolved "https://registry.yarnpkg.com/@paljs/theme/-/theme-1.0.3.tgz#7c59e85e6c1d0dbdd46946166d9e7b2a012637c0"
   integrity sha512-m6v2ugKpinC1qg1MytdI8GdMsRu+iaBgWxK7Tao1S6c1FJsUFtz8KfBRNByMwng7cj/rgducB+eYbUJsUoTFCA==
 
-"@paljs/types@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@paljs/types/-/types-2.2.1.tgz#2f5e9842688c5f47d2b464464b6b54ddae8a1265"
-  integrity sha512-ykAdxMgYaYI4bCc9rv3Sf5mkCUpB0l+d+cikr5ck+u/V8wCpfVKpxkvM6gMm2+DRjB1t9pIudz3iqWMShAeavA==
+"@paljs/types@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@paljs/types/-/types-2.3.0.tgz#aacc842cbd6845d2b54e222e9e89a637ba974e47"
+  integrity sha512-AsWuMvMVCtQTozZLteoIFVvPCGJ821IIlk/bVlADqsd8aBarWrHHR5aVd3pk9Ge2aQdgqUI8Hj2taWN9El+qyA==
 
 "@paljs/ui@1.0.4":
   version "1.0.4"
