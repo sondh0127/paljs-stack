@@ -1,7 +1,7 @@
 import { Button } from '@paljs/ui/Button';
 import { InputGroup } from '@paljs/ui/Input';
 import { Checkbox } from '@paljs/ui/Checkbox';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import Auth from 'Components/Auth';
 import Socials from 'Components/Auth/Socials';

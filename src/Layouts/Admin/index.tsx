@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, createContext } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import themes from './themes';
 import { Layout, LayoutContent, LayoutContainer, LayoutColumns, LayoutColumn } from '@paljs/ui/Layout';
@@ -22,7 +22,7 @@ interface ContextProps {
 
 const initialContext: ContextProps = {};
 
-export const LayoutContext: React.Context<ContextProps> = React.createContext(initialContext);
+export const LayoutContext = createContext<ContextProps>(initialContext);
 
 const LayoutPage: React.FC = ({ children }) => {
   const [theme, setTheme] = useState<DefaultTheme['name']>('dark');

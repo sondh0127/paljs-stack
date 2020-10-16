@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '@paljs/ui/Button';
 import { InputGroup } from '@paljs/ui/Input';
 import Auth, { Group } from 'Components/Auth';

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Card, CardBody } from '@paljs/ui/Card';
 import { Button } from '@paljs/ui/Button';
 import { useRouter } from 'next/router';

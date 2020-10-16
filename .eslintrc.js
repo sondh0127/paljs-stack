@@ -22,6 +22,8 @@ module.exports = {
     'no-empty-function': 'off',
     'no-console': [1],
     'react/display-name': [0],
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   settings: {
     react: {

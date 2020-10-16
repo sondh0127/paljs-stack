@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Card, CardBody } from '@paljs/ui/Card';
 import { breakpointDown } from '@paljs/ui/breakpoints';

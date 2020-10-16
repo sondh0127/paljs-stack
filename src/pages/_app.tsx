@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { AppProps } from 'next/app';
-import * as React from 'react';
 import { NextPage } from 'next';
 import Layout from 'Layouts/Admin';
 import { ApolloProvider } from '@apollo/client';
