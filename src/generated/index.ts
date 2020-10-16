@@ -9,9 +9,11 @@ export type Scalars = {
   Int: number;
   Float: number;
   /** Date custom scalar type */
-  DateTime: any;
+  DateTime: Date;
+  /** The `Upload` scalar type represents a file upload. */
+  Upload: File;
   /** Json custom scalar type */
-  Json: any;
+  Json: { [key: string]: any };
 };
 
 export type AggregateComment = {
@@ -513,6 +515,7 @@ export type Mutation = {
   login?: Maybe<User>;
   logout?: Maybe<Scalars['Boolean']>;
   signup?: Maybe<User>;
+  singleUpload?: Maybe<UploadFile>;
   updateField?: Maybe<Field>;
   updateManyComment?: Maybe<BatchPayload>;
   updateManyGroup?: Maybe<BatchPayload>;
@@ -619,6 +622,11 @@ export type MutationSignupArgs = {
   email: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
+};
+
+
+export type MutationSingleUploadArgs = {
+  file: Scalars['Upload'];
 };
 
 
@@ -1218,6 +1226,7 @@ export type Query = {
   findOneUser?: Maybe<User>;
   getSchema?: Maybe<Schema>;
   me?: Maybe<User>;
+  uploads?: Maybe<Array<Maybe<Project>>>;
 };
 
 
@@ -1517,6 +1526,13 @@ export type UpdateModelInput = {
   idField?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   update?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type UploadFile = {
+  __typename?: 'UploadFile';
+  filename?: Maybe<Scalars['String']>;
+  uri?: Maybe<Scalars['String']>;
 };
 
 export type User = {
@@ -1903,6 +1919,19 @@ export type LogoutMutation = (
   & Pick<Mutation, 'logout'>
 );
 
+export type SingleUploadMutationVariables = Exact<{
+  file: Scalars['Upload'];
+}>;
+
+
+export type SingleUploadMutation = (
+  { __typename?: 'Mutation' }
+  & { singleUpload?: Maybe<(
+    { __typename?: 'UploadFile' }
+    & Pick<UploadFile, 'uri' | 'filename'>
+  )> }
+);
+
 
 export const MeDocument = Apollo.gql`
     query me {
@@ -2031,3 +2060,35 @@ export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<Logou
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
+export const SingleUploadDocument = Apollo.gql`
+    mutation singleUpload($file: Upload!) {
+  singleUpload(file: $file) {
+    uri
+    filename
+  }
+}
+    `;
+
+/**
+ * __useSingleUploadMutation__
+ *
+ * To run a mutation, you first call `useSingleUploadMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSingleUploadMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [singleUploadMutation, { data, loading, error }] = useSingleUploadMutation({
+ *   variables: {
+ *      file: // value for 'file'
+ *   },
+ * });
+ */
+export function useSingleUploadMutation(baseOptions?: Apollo.MutationHookOptions<SingleUploadMutation, SingleUploadMutationVariables>) {
+        return Apollo.useMutation<SingleUploadMutation, SingleUploadMutationVariables>(SingleUploadDocument, baseOptions);
+      }
+export type SingleUploadMutationHookResult = ReturnType<typeof useSingleUploadMutation>;
+export type SingleUploadMutationResult = Apollo.MutationResult<SingleUploadMutation>;
+export type SingleUploadMutationOptions = Apollo.BaseMutationOptions<SingleUploadMutation, SingleUploadMutationVariables>;

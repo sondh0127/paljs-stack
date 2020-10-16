@@ -475,6 +475,7 @@ type Mutation {
   login(email: String!, password: String!): User
   logout: Boolean
   signup(email: String!, name: String, password: String!): User
+  singleUpload(file: Upload!): UploadFile
   updateField(data: UpdateFieldInput, id: String!, modelId: String!): Field
   updateManyComment(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload
   updateManyGroup(data: GroupUpdateManyMutationInput!, where: GroupWhereInput): BatchPayload
@@ -957,6 +958,7 @@ type Query {
   findOneUser(where: UserWhereUniqueInput!): User
   getSchema: Schema
   me: User
+  uploads: [Project]
 }
 
 type Schema {
@@ -1030,6 +1032,14 @@ input UpdateModelInput {
   idField: String
   name: String
   update: Boolean
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  filename: String
+  uri: String
 }
 
 type User {

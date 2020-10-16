@@ -1,6 +1,11 @@
 overwrite: true
 schema: 'src/generated/schema.graphql'
 documents: 'src/graphql/**/*.graphql'
+config:
+  scalars:
+    Upload: File
+    DateTime: Date
+    Json: '{ [key: string]: any }'
 generates:
   src/generated/index.ts:
     plugins:

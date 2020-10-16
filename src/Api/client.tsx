@@ -10,8 +10,9 @@ function createIsomorphLink() {
     const { schema } = require('./nexusSchema')
     return new SchemaLink({ schema })
   } else {
-    const { HttpLink } = require('@apollo/client/link/http')
-    return new HttpLink({
+    // const { HttpLink } = require('@apollo/client/link/http')
+    const { createUploadLink } = require('apollo-upload-client')
+    return createUploadLink({
       uri: '/api/graphql',
       credentials: 'same-origin',
     })

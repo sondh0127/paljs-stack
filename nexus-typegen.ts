@@ -7,6 +7,10 @@ import * as Context from './src/Api/context';
 import { core } from '@nexus/schema';
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
+    upload<FieldName extends string>(
+      fieldName: FieldName,
+      opts?: core.ScalarInputFieldConfig<core.GetGen3<'inputTypes', TypeName, FieldName>>,
+    ): void; // "Upload";
     json<FieldName extends string>(
       fieldName: FieldName,
       opts?: core.ScalarInputFieldConfig<core.GetGen3<'inputTypes', TypeName, FieldName>>,
@@ -19,6 +23,7 @@ declare global {
 }
 declare global {
   interface NexusGenCustomOutputMethods<TypeName extends string> {
+    upload<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void; // "Upload";
     json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void; // "Json";
     date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void; // "DateTime";
   }
@@ -1012,6 +1017,7 @@ export interface NexusGenScalars {
   ID: string;
   DateTime: any;
   Json: any;
+  Upload: any;
 }
 
 export interface NexusGenRootTypes {
@@ -1217,6 +1223,11 @@ export interface NexusGenRootTypes {
     enums?: Array<NexusGenRootTypes['Enum'] | null> | null; // [Enum]
     models?: Array<NexusGenRootTypes['Model'] | null> | null; // [Model]
   };
+  UploadFile: {
+    // root type
+    filename?: string | null; // String
+    uri?: string | null; // String
+  };
   User: {
     // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
@@ -1385,6 +1396,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   ID: NexusGenScalars['ID'];
   DateTime: NexusGenScalars['DateTime'];
   Json: NexusGenScalars['Json'];
+  Upload: NexusGenScalars['Upload'];
 }
 
 export interface NexusGenFieldTypes {
@@ -1548,6 +1560,7 @@ export interface NexusGenFieldTypes {
     login: NexusGenRootTypes['User'] | null; // User
     logout: boolean | null; // Boolean
     signup: NexusGenRootTypes['User'] | null; // User
+    singleUpload: NexusGenRootTypes['UploadFile'] | null; // UploadFile
     updateField: NexusGenRootTypes['Field'] | null; // Field
     updateManyComment: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     updateManyGroup: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
@@ -1657,11 +1670,17 @@ export interface NexusGenFieldTypes {
     findOneUser: NexusGenRootTypes['User'] | null; // User
     getSchema: NexusGenRootTypes['Schema'] | null; // Schema
     me: NexusGenRootTypes['User'] | null; // User
+    uploads: Array<NexusGenRootTypes['Project'] | null> | null; // [Project]
   };
   Schema: {
     // field return type
     enums: Array<NexusGenRootTypes['Enum'] | null> | null; // [Enum]
     models: Array<NexusGenRootTypes['Model'] | null> | null; // [Model]
+  };
+  UploadFile: {
+    // field return type
+    filename: string | null; // String
+    uri: string | null; // String
   };
   User: {
     // field return type
@@ -1781,6 +1800,10 @@ export interface NexusGenArgTypes {
       email: string; // String!
       name?: string | null; // String
       password: string; // String!
+    };
+    singleUpload: {
+      // args
+      file: NexusGenScalars['Upload']; // Upload!
     };
     updateField: {
       // args
@@ -2160,6 +2183,7 @@ export type NexusGenObjectNames =
   | 'ProjectSumAggregateOutputType'
   | 'Query'
   | 'Schema'
+  | 'UploadFile'
   | 'User'
   | 'UserAvgAggregateOutputType'
   | 'UserMaxAggregateOutputType'
@@ -2301,7 +2325,7 @@ export type NexusGenEnumNames =
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = 'Boolean' | 'DateTime' | 'Float' | 'ID' | 'Int' | 'Json' | 'String';
+export type NexusGenScalarNames = 'Boolean' | 'DateTime' | 'Float' | 'ID' | 'Int' | 'Json' | 'String' | 'Upload';
 
 export type NexusGenUnionNames = never;
 

@@ -8,6 +8,10 @@ const items: MenuItemType[] = [
     children: [
       { title: 'Users', link: { href: '/admin/models/User' } },
       {
+        title: 'Projects',
+        link: { href: '/admin/models/Project' },
+      },
+      {
         title: 'Posts',
         link: { href: '/admin/models/Post' },
       },
