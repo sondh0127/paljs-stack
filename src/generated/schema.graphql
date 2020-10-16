@@ -26,6 +26,14 @@ type AggregatePost {
   sum: PostSumAggregateOutputType
 }
 
+type AggregateProject {
+  avg: ProjectAvgAggregateOutputType
+  count: Int!
+  max: ProjectMaxAggregateOutputType
+  min: ProjectMinAggregateOutputType
+  sum: ProjectSumAggregateOutputType
+}
+
 type AggregateUser {
   avg: UserAvgAggregateOutputType
   count: Int!
@@ -452,14 +460,17 @@ type Mutation {
   createOneComment(data: CommentCreateInput!): Comment!
   createOneGroup(data: GroupCreateInput!): Group!
   createOnePost(data: PostCreateInput!): Post!
+  createOneProject(data: ProjectCreateInput!): Project!
   createOneUser(data: UserCreateInput!): User!
   deleteManyComment(where: CommentWhereInput): BatchPayload
   deleteManyGroup(where: GroupWhereInput): BatchPayload
   deleteManyPost(where: PostWhereInput): BatchPayload
+  deleteManyProject(where: ProjectWhereInput): BatchPayload
   deleteManyUser(where: UserWhereInput): BatchPayload
   deleteOneComment(where: CommentWhereUniqueInput!): Comment
   deleteOneGroup(where: GroupWhereUniqueInput!): Group
   deleteOnePost(where: PostWhereUniqueInput!): Post
+  deleteOneProject(where: ProjectWhereUniqueInput!): Project
   deleteOneUser(where: UserWhereUniqueInput!): User
   login(email: String!, password: String!): User
   logout: Boolean
@@ -468,16 +479,19 @@ type Mutation {
   updateManyComment(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload
   updateManyGroup(data: GroupUpdateManyMutationInput!, where: GroupWhereInput): BatchPayload
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload
+  updateManyProject(data: ProjectUpdateManyMutationInput!, where: ProjectWhereInput): BatchPayload
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload
   updateModel(data: UpdateModelInput, id: String!): Model
   updateOneComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
   updateOneGroup(data: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group!
   updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+  updateOneProject(data: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project!
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   updatePassword(currentPassword: String!, password: String!): Boolean
   upsertOneComment(create: CommentCreateInput!, update: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
   upsertOneGroup(create: GroupCreateInput!, update: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group!
   upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+  upsertOneProject(create: ProjectCreateInput!, update: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project!
   upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
 
@@ -755,14 +769,176 @@ input PostWhereUniqueInput {
   id: Int
 }
 
+type Project {
+  createdAt: DateTime!
+  description: String!
+  id: Int!
+  owner: User
+  ownerId: Int
+  title: String!
+  updatedAt: DateTime!
+}
+
+type ProjectAvgAggregateOutputType {
+  id: Float!
+  ownerId: Float
+}
+
+input ProjectCreateInput {
+  createdAt: DateTime
+  description: String!
+  owner: UserCreateOneWithoutProjectInput
+  title: String!
+  updatedAt: DateTime
+}
+
+input ProjectCreateManyWithoutOwnerInput {
+  connect: [ProjectWhereUniqueInput]
+  create: [ProjectCreateWithoutOwnerInput]
+}
+
+input ProjectCreateWithoutOwnerInput {
+  createdAt: DateTime
+  description: String!
+  title: String!
+  updatedAt: DateTime
+}
+
+enum ProjectDistinctFieldEnum {
+  createdAt
+  description
+  id
+  ownerId
+  title
+  updatedAt
+}
+
+input ProjectListRelationFilter {
+  every: ProjectWhereInput
+  none: ProjectWhereInput
+  some: ProjectWhereInput
+}
+
+type ProjectMaxAggregateOutputType {
+  id: Int!
+  ownerId: Int
+}
+
+type ProjectMinAggregateOutputType {
+  id: Int!
+  ownerId: Int
+}
+
+input ProjectOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  ownerId: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input ProjectScalarWhereInput {
+  AND: [ProjectScalarWhereInput]
+  createdAt: DateTimeFilter
+  description: StringFilter
+  id: IntFilter
+  NOT: [ProjectScalarWhereInput]
+  OR: [ProjectScalarWhereInput]
+  ownerId: IntNullableFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+type ProjectSumAggregateOutputType {
+  id: Int!
+  ownerId: Int
+}
+
+input ProjectUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  owner: UserUpdateOneWithoutProjectInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ProjectUpdateManyDataInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ProjectUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ProjectUpdateManyWithoutOwnerInput {
+  connect: [ProjectWhereUniqueInput]
+  create: [ProjectCreateWithoutOwnerInput]
+  delete: [ProjectWhereUniqueInput]
+  deleteMany: [ProjectScalarWhereInput]
+  disconnect: [ProjectWhereUniqueInput]
+  set: [ProjectWhereUniqueInput]
+  update: [ProjectUpdateWithWhereUniqueWithoutOwnerInput]
+  updateMany: [ProjectUpdateManyWithWhereNestedInput]
+  upsert: [ProjectUpsertWithWhereUniqueWithoutOwnerInput]
+}
+
+input ProjectUpdateManyWithWhereNestedInput {
+  data: ProjectUpdateManyDataInput!
+  where: ProjectScalarWhereInput!
+}
+
+input ProjectUpdateWithoutOwnerDataInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ProjectUpdateWithWhereUniqueWithoutOwnerInput {
+  data: ProjectUpdateWithoutOwnerDataInput!
+  where: ProjectWhereUniqueInput!
+}
+
+input ProjectUpsertWithWhereUniqueWithoutOwnerInput {
+  create: ProjectCreateWithoutOwnerInput!
+  update: ProjectUpdateWithoutOwnerDataInput!
+  where: ProjectWhereUniqueInput!
+}
+
+input ProjectWhereInput {
+  AND: [ProjectWhereInput]
+  createdAt: DateTimeFilter
+  description: StringFilter
+  id: IntFilter
+  NOT: [ProjectWhereInput]
+  OR: [ProjectWhereInput]
+  owner: UserWhereInput
+  ownerId: IntNullableFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+input ProjectWhereUniqueInput {
+  id: Int
+}
+
 type Query {
   aggregateComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): AggregateComment
   aggregateGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): AggregateGroup
   aggregatePost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): AggregatePost
+  aggregateProject(cursor: ProjectWhereUniqueInput, distinct: ProjectDistinctFieldEnum, orderBy: [ProjectOrderByInput], skip: Int, take: Int, where: ProjectWhereInput): AggregateProject
   aggregateUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): AggregateUser
   findFirstComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment]
   findFirstGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group]
   findFirstPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post]
+  findFirstProject(cursor: ProjectWhereUniqueInput, distinct: ProjectDistinctFieldEnum, orderBy: [ProjectOrderByInput], skip: Int, take: Int, where: ProjectWhereInput): [Project]
   findFirstUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User]
   findManyComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment]
   findManyCommentCount(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int
@@ -770,11 +946,14 @@ type Query {
   findManyGroupCount(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Int
   findManyPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post]
   findManyPostCount(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int
+  findManyProject(cursor: ProjectWhereUniqueInput, distinct: ProjectDistinctFieldEnum, orderBy: [ProjectOrderByInput], skip: Int, take: Int, where: ProjectWhereInput): [Project]
+  findManyProjectCount(cursor: ProjectWhereUniqueInput, distinct: ProjectDistinctFieldEnum, orderBy: [ProjectOrderByInput], skip: Int, take: Int, where: ProjectWhereInput): Int
   findManyUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User]
   findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int
   findOneComment(where: CommentWhereUniqueInput!): Comment
   findOneGroup(where: GroupWhereUniqueInput!): Group
   findOnePost(where: PostWhereUniqueInput!): Post
+  findOneProject(where: ProjectWhereUniqueInput!): Project
   findOneUser(where: UserWhereUniqueInput!): User
   getSchema: Schema
   me: User
@@ -863,6 +1042,7 @@ type User {
   name: String
   password: String!
   posts(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: PostOrderByInput, skip: Int, take: Int, where: PostWhereInput): [Post!]!
+  Project(cursor: ProjectWhereUniqueInput, distinct: ProjectDistinctFieldEnum, orderBy: ProjectOrderByInput, skip: Int, take: Int, where: ProjectWhereInput): [Project!]!
 }
 
 type UserAvgAggregateOutputType {
@@ -878,6 +1058,7 @@ input UserCreateInput {
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
+  Project: ProjectCreateManyWithoutOwnerInput
 }
 
 input UserCreateManyWithoutGroupInput {
@@ -895,6 +1076,11 @@ input UserCreateOneWithoutPostsInput {
   create: UserCreateWithoutPostsInput
 }
 
+input UserCreateOneWithoutProjectInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutProjectInput
+}
+
 input UserCreateWithoutCommentsInput {
   createdAt: DateTime
   email: String!
@@ -902,6 +1088,7 @@ input UserCreateWithoutCommentsInput {
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
+  Project: ProjectCreateManyWithoutOwnerInput
 }
 
 input UserCreateWithoutGroupInput {
@@ -911,6 +1098,7 @@ input UserCreateWithoutGroupInput {
   name: String
   password: String!
   posts: PostCreateManyWithoutAuthorInput
+  Project: ProjectCreateManyWithoutOwnerInput
 }
 
 input UserCreateWithoutPostsInput {
@@ -920,6 +1108,17 @@ input UserCreateWithoutPostsInput {
   group: GroupCreateOneWithoutUsersInput
   name: String
   password: String!
+  Project: ProjectCreateManyWithoutOwnerInput
+}
+
+input UserCreateWithoutProjectInput {
+  comments: CommentCreateManyWithoutAuthorInput
+  createdAt: DateTime
+  email: String!
+  group: GroupCreateOneWithoutUsersInput
+  name: String
+  password: String!
+  posts: PostCreateManyWithoutAuthorInput
 }
 
 enum UserDistinctFieldEnum {
@@ -986,6 +1185,7 @@ input UserUpdateInput {
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
+  Project: ProjectUpdateManyWithoutOwnerInput
 }
 
 input UserUpdateManyDataInput {
@@ -1037,6 +1237,15 @@ input UserUpdateOneWithoutPostsInput {
   upsert: UserUpsertWithoutPostsInput
 }
 
+input UserUpdateOneWithoutProjectInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutProjectInput
+  delete: Boolean
+  disconnect: Boolean
+  update: UserUpdateWithoutProjectDataInput
+  upsert: UserUpsertWithoutProjectInput
+}
+
 input UserUpdateWithoutCommentsDataInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -1044,6 +1253,7 @@ input UserUpdateWithoutCommentsDataInput {
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
+  Project: ProjectUpdateManyWithoutOwnerInput
 }
 
 input UserUpdateWithoutGroupDataInput {
@@ -1053,6 +1263,7 @@ input UserUpdateWithoutGroupDataInput {
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
+  Project: ProjectUpdateManyWithoutOwnerInput
 }
 
 input UserUpdateWithoutPostsDataInput {
@@ -1062,6 +1273,17 @@ input UserUpdateWithoutPostsDataInput {
   group: GroupUpdateOneWithoutUsersInput
   name: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  Project: ProjectUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateWithoutProjectDataInput {
+  comments: CommentUpdateManyWithoutAuthorInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  group: GroupUpdateOneWithoutUsersInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutAuthorInput
 }
 
 input UserUpdateWithWhereUniqueWithoutGroupInput {
@@ -1077,6 +1299,11 @@ input UserUpsertWithoutCommentsInput {
 input UserUpsertWithoutPostsInput {
   create: UserCreateWithoutPostsInput!
   update: UserUpdateWithoutPostsDataInput!
+}
+
+input UserUpsertWithoutProjectInput {
+  create: UserCreateWithoutProjectInput!
+  update: UserUpdateWithoutProjectDataInput!
 }
 
 input UserUpsertWithWhereUniqueWithoutGroupInput {
@@ -1098,6 +1325,7 @@ input UserWhereInput {
   OR: [UserWhereInput]
   password: StringFilter
   posts: PostListRelationFilter
+  Project: ProjectListRelationFilter
 }
 
 input UserWhereUniqueInput {

@@ -41,6 +41,15 @@ export type AggregatePost = {
   sum?: Maybe<PostSumAggregateOutputType>;
 };
 
+export type AggregateProject = {
+  __typename?: 'AggregateProject';
+  avg?: Maybe<ProjectAvgAggregateOutputType>;
+  count: Scalars['Int'];
+  max?: Maybe<ProjectMaxAggregateOutputType>;
+  min?: Maybe<ProjectMinAggregateOutputType>;
+  sum?: Maybe<ProjectSumAggregateOutputType>;
+};
+
 export type AggregateUser = {
   __typename?: 'AggregateUser';
   avg?: Maybe<UserAvgAggregateOutputType>;
@@ -489,14 +498,17 @@ export type Mutation = {
   createOneComment: Comment;
   createOneGroup: Group;
   createOnePost: Post;
+  createOneProject: Project;
   createOneUser: User;
   deleteManyComment?: Maybe<BatchPayload>;
   deleteManyGroup?: Maybe<BatchPayload>;
   deleteManyPost?: Maybe<BatchPayload>;
+  deleteManyProject?: Maybe<BatchPayload>;
   deleteManyUser?: Maybe<BatchPayload>;
   deleteOneComment?: Maybe<Comment>;
   deleteOneGroup?: Maybe<Group>;
   deleteOnePost?: Maybe<Post>;
+  deleteOneProject?: Maybe<Project>;
   deleteOneUser?: Maybe<User>;
   login?: Maybe<User>;
   logout?: Maybe<Scalars['Boolean']>;
@@ -505,16 +517,19 @@ export type Mutation = {
   updateManyComment?: Maybe<BatchPayload>;
   updateManyGroup?: Maybe<BatchPayload>;
   updateManyPost?: Maybe<BatchPayload>;
+  updateManyProject?: Maybe<BatchPayload>;
   updateManyUser?: Maybe<BatchPayload>;
   updateModel?: Maybe<Model>;
   updateOneComment: Comment;
   updateOneGroup: Group;
   updateOnePost: Post;
+  updateOneProject: Project;
   updateOneUser: User;
   updatePassword?: Maybe<Scalars['Boolean']>;
   upsertOneComment: Comment;
   upsertOneGroup: Group;
   upsertOnePost: Post;
+  upsertOneProject: Project;
   upsertOneUser: User;
 };
 
@@ -531,6 +546,11 @@ export type MutationCreateOneGroupArgs = {
 
 export type MutationCreateOnePostArgs = {
   data: PostCreateInput;
+};
+
+
+export type MutationCreateOneProjectArgs = {
+  data: ProjectCreateInput;
 };
 
 
@@ -554,6 +574,11 @@ export type MutationDeleteManyPostArgs = {
 };
 
 
+export type MutationDeleteManyProjectArgs = {
+  where?: Maybe<ProjectWhereInput>;
+};
+
+
 export type MutationDeleteManyUserArgs = {
   where?: Maybe<UserWhereInput>;
 };
@@ -571,6 +596,11 @@ export type MutationDeleteOneGroupArgs = {
 
 export type MutationDeleteOnePostArgs = {
   where: PostWhereUniqueInput;
+};
+
+
+export type MutationDeleteOneProjectArgs = {
+  where: ProjectWhereUniqueInput;
 };
 
 
@@ -617,6 +647,12 @@ export type MutationUpdateManyPostArgs = {
 };
 
 
+export type MutationUpdateManyProjectArgs = {
+  data: ProjectUpdateManyMutationInput;
+  where?: Maybe<ProjectWhereInput>;
+};
+
+
 export type MutationUpdateManyUserArgs = {
   data: UserUpdateManyMutationInput;
   where?: Maybe<UserWhereInput>;
@@ -644,6 +680,12 @@ export type MutationUpdateOneGroupArgs = {
 export type MutationUpdateOnePostArgs = {
   data: PostUpdateInput;
   where: PostWhereUniqueInput;
+};
+
+
+export type MutationUpdateOneProjectArgs = {
+  data: ProjectUpdateInput;
+  where: ProjectWhereUniqueInput;
 };
 
 
@@ -677,6 +719,13 @@ export type MutationUpsertOnePostArgs = {
   create: PostCreateInput;
   update: PostUpdateInput;
   where: PostWhereUniqueInput;
+};
+
+
+export type MutationUpsertOneProjectArgs = {
+  create: ProjectCreateInput;
+  update: ProjectUpdateInput;
+  where: ProjectWhereUniqueInput;
 };
 
 
@@ -975,15 +1024,182 @@ export type PostWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
 };
 
+export type Project = {
+  __typename?: 'Project';
+  createdAt: Scalars['DateTime'];
+  description: Scalars['String'];
+  id: Scalars['Int'];
+  owner?: Maybe<User>;
+  ownerId?: Maybe<Scalars['Int']>;
+  title: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
+};
+
+export type ProjectAvgAggregateOutputType = {
+  __typename?: 'ProjectAvgAggregateOutputType';
+  id: Scalars['Float'];
+  ownerId?: Maybe<Scalars['Float']>;
+};
+
+export type ProjectCreateInput = {
+  createdAt?: Maybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  owner?: Maybe<UserCreateOneWithoutProjectInput>;
+  title: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProjectCreateManyWithoutOwnerInput = {
+  connect?: Maybe<Array<Maybe<ProjectWhereUniqueInput>>>;
+  create?: Maybe<Array<Maybe<ProjectCreateWithoutOwnerInput>>>;
+};
+
+export type ProjectCreateWithoutOwnerInput = {
+  createdAt?: Maybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  title: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export enum ProjectDistinctFieldEnum {
+  CreatedAt = 'createdAt',
+  Description = 'description',
+  Id = 'id',
+  OwnerId = 'ownerId',
+  Title = 'title',
+  UpdatedAt = 'updatedAt'
+}
+
+export type ProjectListRelationFilter = {
+  every?: Maybe<ProjectWhereInput>;
+  none?: Maybe<ProjectWhereInput>;
+  some?: Maybe<ProjectWhereInput>;
+};
+
+export type ProjectMaxAggregateOutputType = {
+  __typename?: 'ProjectMaxAggregateOutputType';
+  id: Scalars['Int'];
+  ownerId?: Maybe<Scalars['Int']>;
+};
+
+export type ProjectMinAggregateOutputType = {
+  __typename?: 'ProjectMinAggregateOutputType';
+  id: Scalars['Int'];
+  ownerId?: Maybe<Scalars['Int']>;
+};
+
+export type ProjectOrderByInput = {
+  createdAt?: Maybe<SortOrder>;
+  description?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  ownerId?: Maybe<SortOrder>;
+  title?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+};
+
+export type ProjectScalarWhereInput = {
+  AND?: Maybe<Array<Maybe<ProjectScalarWhereInput>>>;
+  createdAt?: Maybe<DateTimeFilter>;
+  description?: Maybe<StringFilter>;
+  id?: Maybe<IntFilter>;
+  NOT?: Maybe<Array<Maybe<ProjectScalarWhereInput>>>;
+  OR?: Maybe<Array<Maybe<ProjectScalarWhereInput>>>;
+  ownerId?: Maybe<IntNullableFilter>;
+  title?: Maybe<StringFilter>;
+  updatedAt?: Maybe<DateTimeFilter>;
+};
+
+export type ProjectSumAggregateOutputType = {
+  __typename?: 'ProjectSumAggregateOutputType';
+  id: Scalars['Int'];
+  ownerId?: Maybe<Scalars['Int']>;
+};
+
+export type ProjectUpdateInput = {
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  description?: Maybe<StringFieldUpdateOperationsInput>;
+  owner?: Maybe<UserUpdateOneWithoutProjectInput>;
+  title?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpdateManyDataInput = {
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  description?: Maybe<StringFieldUpdateOperationsInput>;
+  title?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpdateManyMutationInput = {
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  description?: Maybe<StringFieldUpdateOperationsInput>;
+  title?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpdateManyWithoutOwnerInput = {
+  connect?: Maybe<Array<Maybe<ProjectWhereUniqueInput>>>;
+  create?: Maybe<Array<Maybe<ProjectCreateWithoutOwnerInput>>>;
+  delete?: Maybe<Array<Maybe<ProjectWhereUniqueInput>>>;
+  deleteMany?: Maybe<Array<Maybe<ProjectScalarWhereInput>>>;
+  disconnect?: Maybe<Array<Maybe<ProjectWhereUniqueInput>>>;
+  set?: Maybe<Array<Maybe<ProjectWhereUniqueInput>>>;
+  update?: Maybe<Array<Maybe<ProjectUpdateWithWhereUniqueWithoutOwnerInput>>>;
+  updateMany?: Maybe<Array<Maybe<ProjectUpdateManyWithWhereNestedInput>>>;
+  upsert?: Maybe<Array<Maybe<ProjectUpsertWithWhereUniqueWithoutOwnerInput>>>;
+};
+
+export type ProjectUpdateManyWithWhereNestedInput = {
+  data: ProjectUpdateManyDataInput;
+  where: ProjectScalarWhereInput;
+};
+
+export type ProjectUpdateWithoutOwnerDataInput = {
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  description?: Maybe<StringFieldUpdateOperationsInput>;
+  title?: Maybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type ProjectUpdateWithWhereUniqueWithoutOwnerInput = {
+  data: ProjectUpdateWithoutOwnerDataInput;
+  where: ProjectWhereUniqueInput;
+};
+
+export type ProjectUpsertWithWhereUniqueWithoutOwnerInput = {
+  create: ProjectCreateWithoutOwnerInput;
+  update: ProjectUpdateWithoutOwnerDataInput;
+  where: ProjectWhereUniqueInput;
+};
+
+export type ProjectWhereInput = {
+  AND?: Maybe<Array<Maybe<ProjectWhereInput>>>;
+  createdAt?: Maybe<DateTimeFilter>;
+  description?: Maybe<StringFilter>;
+  id?: Maybe<IntFilter>;
+  NOT?: Maybe<Array<Maybe<ProjectWhereInput>>>;
+  OR?: Maybe<Array<Maybe<ProjectWhereInput>>>;
+  owner?: Maybe<UserWhereInput>;
+  ownerId?: Maybe<IntNullableFilter>;
+  title?: Maybe<StringFilter>;
+  updatedAt?: Maybe<DateTimeFilter>;
+};
+
+export type ProjectWhereUniqueInput = {
+  id?: Maybe<Scalars['Int']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   aggregateComment?: Maybe<AggregateComment>;
   aggregateGroup?: Maybe<AggregateGroup>;
   aggregatePost?: Maybe<AggregatePost>;
+  aggregateProject?: Maybe<AggregateProject>;
   aggregateUser?: Maybe<AggregateUser>;
   findFirstComment?: Maybe<Array<Maybe<Comment>>>;
   findFirstGroup?: Maybe<Array<Maybe<Group>>>;
   findFirstPost?: Maybe<Array<Maybe<Post>>>;
+  findFirstProject?: Maybe<Array<Maybe<Project>>>;
   findFirstUser?: Maybe<Array<Maybe<User>>>;
   findManyComment?: Maybe<Array<Maybe<Comment>>>;
   findManyCommentCount?: Maybe<Scalars['Int']>;
@@ -991,11 +1207,14 @@ export type Query = {
   findManyGroupCount?: Maybe<Scalars['Int']>;
   findManyPost?: Maybe<Array<Maybe<Post>>>;
   findManyPostCount?: Maybe<Scalars['Int']>;
+  findManyProject?: Maybe<Array<Maybe<Project>>>;
+  findManyProjectCount?: Maybe<Scalars['Int']>;
   findManyUser?: Maybe<Array<Maybe<User>>>;
   findManyUserCount?: Maybe<Scalars['Int']>;
   findOneComment?: Maybe<Comment>;
   findOneGroup?: Maybe<Group>;
   findOnePost?: Maybe<Post>;
+  findOneProject?: Maybe<Project>;
   findOneUser?: Maybe<User>;
   getSchema?: Maybe<Schema>;
   me?: Maybe<User>;
@@ -1029,6 +1248,16 @@ export type QueryAggregatePostArgs = {
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
   where?: Maybe<PostWhereInput>;
+};
+
+
+export type QueryAggregateProjectArgs = {
+  cursor?: Maybe<ProjectWhereUniqueInput>;
+  distinct?: Maybe<ProjectDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<ProjectOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<ProjectWhereInput>;
 };
 
 
@@ -1069,6 +1298,16 @@ export type QueryFindFirstPostArgs = {
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
   where?: Maybe<PostWhereInput>;
+};
+
+
+export type QueryFindFirstProjectArgs = {
+  cursor?: Maybe<ProjectWhereUniqueInput>;
+  distinct?: Maybe<ProjectDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<ProjectOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<ProjectWhereInput>;
 };
 
 
@@ -1142,6 +1381,26 @@ export type QueryFindManyPostCountArgs = {
 };
 
 
+export type QueryFindManyProjectArgs = {
+  cursor?: Maybe<ProjectWhereUniqueInput>;
+  distinct?: Maybe<ProjectDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<ProjectOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<ProjectWhereInput>;
+};
+
+
+export type QueryFindManyProjectCountArgs = {
+  cursor?: Maybe<ProjectWhereUniqueInput>;
+  distinct?: Maybe<ProjectDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<ProjectOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<ProjectWhereInput>;
+};
+
+
 export type QueryFindManyUserArgs = {
   cursor?: Maybe<UserWhereUniqueInput>;
   distinct?: Maybe<UserDistinctFieldEnum>;
@@ -1174,6 +1433,11 @@ export type QueryFindOneGroupArgs = {
 
 export type QueryFindOnePostArgs = {
   where: PostWhereUniqueInput;
+};
+
+
+export type QueryFindOneProjectArgs = {
+  where: ProjectWhereUniqueInput;
 };
 
 
@@ -1266,6 +1530,7 @@ export type User = {
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
   posts: Array<Post>;
+  Project: Array<Project>;
 };
 
 
@@ -1288,6 +1553,16 @@ export type UserPostsArgs = {
   where?: Maybe<PostWhereInput>;
 };
 
+
+export type UserProjectArgs = {
+  cursor?: Maybe<ProjectWhereUniqueInput>;
+  distinct?: Maybe<ProjectDistinctFieldEnum>;
+  orderBy?: Maybe<ProjectOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<ProjectWhereInput>;
+};
+
 export type UserAvgAggregateOutputType = {
   __typename?: 'UserAvgAggregateOutputType';
   groupId?: Maybe<Scalars['Float']>;
@@ -1302,6 +1577,7 @@ export type UserCreateInput = {
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
+  Project?: Maybe<ProjectCreateManyWithoutOwnerInput>;
 };
 
 export type UserCreateManyWithoutGroupInput = {
@@ -1319,6 +1595,11 @@ export type UserCreateOneWithoutPostsInput = {
   create?: Maybe<UserCreateWithoutPostsInput>;
 };
 
+export type UserCreateOneWithoutProjectInput = {
+  connect?: Maybe<UserWhereUniqueInput>;
+  create?: Maybe<UserCreateWithoutProjectInput>;
+};
+
 export type UserCreateWithoutCommentsInput = {
   createdAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
@@ -1326,6 +1607,7 @@ export type UserCreateWithoutCommentsInput = {
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
+  Project?: Maybe<ProjectCreateManyWithoutOwnerInput>;
 };
 
 export type UserCreateWithoutGroupInput = {
@@ -1335,6 +1617,7 @@ export type UserCreateWithoutGroupInput = {
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
+  Project?: Maybe<ProjectCreateManyWithoutOwnerInput>;
 };
 
 export type UserCreateWithoutPostsInput = {
@@ -1344,6 +1627,17 @@ export type UserCreateWithoutPostsInput = {
   group?: Maybe<GroupCreateOneWithoutUsersInput>;
   name?: Maybe<Scalars['String']>;
   password: Scalars['String'];
+  Project?: Maybe<ProjectCreateManyWithoutOwnerInput>;
+};
+
+export type UserCreateWithoutProjectInput = {
+  comments?: Maybe<CommentCreateManyWithoutAuthorInput>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  group?: Maybe<GroupCreateOneWithoutUsersInput>;
+  name?: Maybe<Scalars['String']>;
+  password: Scalars['String'];
+  posts?: Maybe<PostCreateManyWithoutAuthorInput>;
 };
 
 export enum UserDistinctFieldEnum {
@@ -1413,6 +1707,7 @@ export type UserUpdateInput = {
   name?: Maybe<NullableStringFieldUpdateOperationsInput>;
   password?: Maybe<StringFieldUpdateOperationsInput>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
+  Project?: Maybe<ProjectUpdateManyWithoutOwnerInput>;
 };
 
 export type UserUpdateManyDataInput = {
@@ -1464,6 +1759,15 @@ export type UserUpdateOneWithoutPostsInput = {
   upsert?: Maybe<UserUpsertWithoutPostsInput>;
 };
 
+export type UserUpdateOneWithoutProjectInput = {
+  connect?: Maybe<UserWhereUniqueInput>;
+  create?: Maybe<UserCreateWithoutProjectInput>;
+  delete?: Maybe<Scalars['Boolean']>;
+  disconnect?: Maybe<Scalars['Boolean']>;
+  update?: Maybe<UserUpdateWithoutProjectDataInput>;
+  upsert?: Maybe<UserUpsertWithoutProjectInput>;
+};
+
 export type UserUpdateWithoutCommentsDataInput = {
   createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
   email?: Maybe<StringFieldUpdateOperationsInput>;
@@ -1471,6 +1775,7 @@ export type UserUpdateWithoutCommentsDataInput = {
   name?: Maybe<NullableStringFieldUpdateOperationsInput>;
   password?: Maybe<StringFieldUpdateOperationsInput>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
+  Project?: Maybe<ProjectUpdateManyWithoutOwnerInput>;
 };
 
 export type UserUpdateWithoutGroupDataInput = {
@@ -1480,6 +1785,7 @@ export type UserUpdateWithoutGroupDataInput = {
   name?: Maybe<NullableStringFieldUpdateOperationsInput>;
   password?: Maybe<StringFieldUpdateOperationsInput>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
+  Project?: Maybe<ProjectUpdateManyWithoutOwnerInput>;
 };
 
 export type UserUpdateWithoutPostsDataInput = {
@@ -1489,6 +1795,17 @@ export type UserUpdateWithoutPostsDataInput = {
   group?: Maybe<GroupUpdateOneWithoutUsersInput>;
   name?: Maybe<NullableStringFieldUpdateOperationsInput>;
   password?: Maybe<StringFieldUpdateOperationsInput>;
+  Project?: Maybe<ProjectUpdateManyWithoutOwnerInput>;
+};
+
+export type UserUpdateWithoutProjectDataInput = {
+  comments?: Maybe<CommentUpdateManyWithoutAuthorInput>;
+  createdAt?: Maybe<DateTimeFieldUpdateOperationsInput>;
+  email?: Maybe<StringFieldUpdateOperationsInput>;
+  group?: Maybe<GroupUpdateOneWithoutUsersInput>;
+  name?: Maybe<NullableStringFieldUpdateOperationsInput>;
+  password?: Maybe<StringFieldUpdateOperationsInput>;
+  posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
 };
 
 export type UserUpdateWithWhereUniqueWithoutGroupInput = {
@@ -1504,6 +1821,11 @@ export type UserUpsertWithoutCommentsInput = {
 export type UserUpsertWithoutPostsInput = {
   create: UserCreateWithoutPostsInput;
   update: UserUpdateWithoutPostsDataInput;
+};
+
+export type UserUpsertWithoutProjectInput = {
+  create: UserCreateWithoutProjectInput;
+  update: UserUpdateWithoutProjectDataInput;
 };
 
 export type UserUpsertWithWhereUniqueWithoutGroupInput = {
@@ -1525,6 +1847,7 @@ export type UserWhereInput = {
   OR?: Maybe<Array<Maybe<UserWhereInput>>>;
   password?: Maybe<StringFilter>;
   posts?: Maybe<PostListRelationFilter>;
+  Project?: Maybe<ProjectListRelationFilter>;
 };
 
 export type UserWhereUniqueInput = {

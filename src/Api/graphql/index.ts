@@ -1,3 +1,4 @@
+export * from './Project'
 export * from './Group'
 export * from './Comment'
 export * from './Post'

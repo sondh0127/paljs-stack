@@ -549,6 +549,127 @@ export interface NexusGenInputs {
     // input type
     id?: number | null; // Int
   };
+  ProjectCreateInput: {
+    // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    description: string; // String!
+    owner?: NexusGenInputs['UserCreateOneWithoutProjectInput'] | null; // UserCreateOneWithoutProjectInput
+    title: string; // String!
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  };
+  ProjectCreateManyWithoutOwnerInput: {
+    // input type
+    connect?: Array<NexusGenInputs['ProjectWhereUniqueInput'] | null> | null; // [ProjectWhereUniqueInput]
+    create?: Array<NexusGenInputs['ProjectCreateWithoutOwnerInput'] | null> | null; // [ProjectCreateWithoutOwnerInput]
+  };
+  ProjectCreateWithoutOwnerInput: {
+    // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    description: string; // String!
+    title: string; // String!
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  };
+  ProjectListRelationFilter: {
+    // input type
+    every?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+    none?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+    some?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+  };
+  ProjectOrderByInput: {
+    // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    ownerId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  };
+  ProjectScalarWhereInput: {
+    // input type
+    AND?: Array<NexusGenInputs['ProjectScalarWhereInput'] | null> | null; // [ProjectScalarWhereInput]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    NOT?: Array<NexusGenInputs['ProjectScalarWhereInput'] | null> | null; // [ProjectScalarWhereInput]
+    OR?: Array<NexusGenInputs['ProjectScalarWhereInput'] | null> | null; // [ProjectScalarWhereInput]
+    ownerId?: NexusGenInputs['IntNullableFilter'] | null; // IntNullableFilter
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  };
+  ProjectUpdateInput: {
+    // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    owner?: NexusGenInputs['UserUpdateOneWithoutProjectInput'] | null; // UserUpdateOneWithoutProjectInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  };
+  ProjectUpdateManyDataInput: {
+    // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  };
+  ProjectUpdateManyMutationInput: {
+    // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  };
+  ProjectUpdateManyWithWhereNestedInput: {
+    // input type
+    data: NexusGenInputs['ProjectUpdateManyDataInput']; // ProjectUpdateManyDataInput!
+    where: NexusGenInputs['ProjectScalarWhereInput']; // ProjectScalarWhereInput!
+  };
+  ProjectUpdateManyWithoutOwnerInput: {
+    // input type
+    connect?: Array<NexusGenInputs['ProjectWhereUniqueInput'] | null> | null; // [ProjectWhereUniqueInput]
+    create?: Array<NexusGenInputs['ProjectCreateWithoutOwnerInput'] | null> | null; // [ProjectCreateWithoutOwnerInput]
+    delete?: Array<NexusGenInputs['ProjectWhereUniqueInput'] | null> | null; // [ProjectWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['ProjectScalarWhereInput'] | null> | null; // [ProjectScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['ProjectWhereUniqueInput'] | null> | null; // [ProjectWhereUniqueInput]
+    set?: Array<NexusGenInputs['ProjectWhereUniqueInput'] | null> | null; // [ProjectWhereUniqueInput]
+    update?: Array<NexusGenInputs['ProjectUpdateWithWhereUniqueWithoutOwnerInput'] | null> | null; // [ProjectUpdateWithWhereUniqueWithoutOwnerInput]
+    updateMany?: Array<NexusGenInputs['ProjectUpdateManyWithWhereNestedInput'] | null> | null; // [ProjectUpdateManyWithWhereNestedInput]
+    upsert?: Array<NexusGenInputs['ProjectUpsertWithWhereUniqueWithoutOwnerInput'] | null> | null; // [ProjectUpsertWithWhereUniqueWithoutOwnerInput]
+  };
+  ProjectUpdateWithWhereUniqueWithoutOwnerInput: {
+    // input type
+    data: NexusGenInputs['ProjectUpdateWithoutOwnerDataInput']; // ProjectUpdateWithoutOwnerDataInput!
+    where: NexusGenInputs['ProjectWhereUniqueInput']; // ProjectWhereUniqueInput!
+  };
+  ProjectUpdateWithoutOwnerDataInput: {
+    // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  };
+  ProjectUpsertWithWhereUniqueWithoutOwnerInput: {
+    // input type
+    create: NexusGenInputs['ProjectCreateWithoutOwnerInput']; // ProjectCreateWithoutOwnerInput!
+    update: NexusGenInputs['ProjectUpdateWithoutOwnerDataInput']; // ProjectUpdateWithoutOwnerDataInput!
+    where: NexusGenInputs['ProjectWhereUniqueInput']; // ProjectWhereUniqueInput!
+  };
+  ProjectWhereInput: {
+    // input type
+    AND?: Array<NexusGenInputs['ProjectWhereInput'] | null> | null; // [ProjectWhereInput]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    NOT?: Array<NexusGenInputs['ProjectWhereInput'] | null> | null; // [ProjectWhereInput]
+    OR?: Array<NexusGenInputs['ProjectWhereInput'] | null> | null; // [ProjectWhereInput]
+    owner?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    ownerId?: NexusGenInputs['IntNullableFilter'] | null; // IntNullableFilter
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  };
+  ProjectWhereUniqueInput: {
+    // input type
+    id?: number | null; // Int
+  };
   StringFieldUpdateOperationsInput: {
     // input type
     set?: string | null; // String
@@ -621,6 +742,7 @@ export interface NexusGenInputs {
     name?: string | null; // String
     password: string; // String!
     posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
+    Project?: NexusGenInputs['ProjectCreateManyWithoutOwnerInput'] | null; // ProjectCreateManyWithoutOwnerInput
   };
   UserCreateManyWithoutGroupInput: {
     // input type
@@ -637,6 +759,11 @@ export interface NexusGenInputs {
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     create?: NexusGenInputs['UserCreateWithoutPostsInput'] | null; // UserCreateWithoutPostsInput
   };
+  UserCreateOneWithoutProjectInput: {
+    // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    create?: NexusGenInputs['UserCreateWithoutProjectInput'] | null; // UserCreateWithoutProjectInput
+  };
   UserCreateWithoutCommentsInput: {
     // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -645,6 +772,7 @@ export interface NexusGenInputs {
     name?: string | null; // String
     password: string; // String!
     posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
+    Project?: NexusGenInputs['ProjectCreateManyWithoutOwnerInput'] | null; // ProjectCreateManyWithoutOwnerInput
   };
   UserCreateWithoutGroupInput: {
     // input type
@@ -654,6 +782,7 @@ export interface NexusGenInputs {
     name?: string | null; // String
     password: string; // String!
     posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
+    Project?: NexusGenInputs['ProjectCreateManyWithoutOwnerInput'] | null; // ProjectCreateManyWithoutOwnerInput
   };
   UserCreateWithoutPostsInput: {
     // input type
@@ -663,6 +792,17 @@ export interface NexusGenInputs {
     group?: NexusGenInputs['GroupCreateOneWithoutUsersInput'] | null; // GroupCreateOneWithoutUsersInput
     name?: string | null; // String
     password: string; // String!
+    Project?: NexusGenInputs['ProjectCreateManyWithoutOwnerInput'] | null; // ProjectCreateManyWithoutOwnerInput
+  };
+  UserCreateWithoutProjectInput: {
+    // input type
+    comments?: NexusGenInputs['CommentCreateManyWithoutAuthorInput'] | null; // CommentCreateManyWithoutAuthorInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    email: string; // String!
+    group?: NexusGenInputs['GroupCreateOneWithoutUsersInput'] | null; // GroupCreateOneWithoutUsersInput
+    name?: string | null; // String
+    password: string; // String!
+    posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
   };
   UserListRelationFilter: {
     // input type
@@ -705,6 +845,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
+    Project?: NexusGenInputs['ProjectUpdateManyWithoutOwnerInput'] | null; // ProjectUpdateManyWithoutOwnerInput
   };
   UserUpdateManyDataInput: {
     // input type
@@ -755,6 +896,15 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['UserUpdateWithoutPostsDataInput'] | null; // UserUpdateWithoutPostsDataInput
     upsert?: NexusGenInputs['UserUpsertWithoutPostsInput'] | null; // UserUpsertWithoutPostsInput
   };
+  UserUpdateOneWithoutProjectInput: {
+    // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    create?: NexusGenInputs['UserCreateWithoutProjectInput'] | null; // UserCreateWithoutProjectInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['UserUpdateWithoutProjectDataInput'] | null; // UserUpdateWithoutProjectDataInput
+    upsert?: NexusGenInputs['UserUpsertWithoutProjectInput'] | null; // UserUpsertWithoutProjectInput
+  };
   UserUpdateWithWhereUniqueWithoutGroupInput: {
     // input type
     data: NexusGenInputs['UserUpdateWithoutGroupDataInput']; // UserUpdateWithoutGroupDataInput!
@@ -768,6 +918,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
+    Project?: NexusGenInputs['ProjectUpdateManyWithoutOwnerInput'] | null; // ProjectUpdateManyWithoutOwnerInput
   };
   UserUpdateWithoutGroupDataInput: {
     // input type
@@ -777,6 +928,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
+    Project?: NexusGenInputs['ProjectUpdateManyWithoutOwnerInput'] | null; // ProjectUpdateManyWithoutOwnerInput
   };
   UserUpdateWithoutPostsDataInput: {
     // input type
@@ -786,6 +938,17 @@ export interface NexusGenInputs {
     group?: NexusGenInputs['GroupUpdateOneWithoutUsersInput'] | null; // GroupUpdateOneWithoutUsersInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    Project?: NexusGenInputs['ProjectUpdateManyWithoutOwnerInput'] | null; // ProjectUpdateManyWithoutOwnerInput
+  };
+  UserUpdateWithoutProjectDataInput: {
+    // input type
+    comments?: NexusGenInputs['CommentUpdateManyWithoutAuthorInput'] | null; // CommentUpdateManyWithoutAuthorInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    group?: NexusGenInputs['GroupUpdateOneWithoutUsersInput'] | null; // GroupUpdateOneWithoutUsersInput
+    name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
   };
   UserUpsertWithWhereUniqueWithoutGroupInput: {
     // input type
@@ -803,6 +966,11 @@ export interface NexusGenInputs {
     create: NexusGenInputs['UserCreateWithoutPostsInput']; // UserCreateWithoutPostsInput!
     update: NexusGenInputs['UserUpdateWithoutPostsDataInput']; // UserUpdateWithoutPostsDataInput!
   };
+  UserUpsertWithoutProjectInput: {
+    // input type
+    create: NexusGenInputs['UserCreateWithoutProjectInput']; // UserCreateWithoutProjectInput!
+    update: NexusGenInputs['UserUpdateWithoutProjectDataInput']; // UserUpdateWithoutProjectDataInput!
+  };
   UserWhereInput: {
     // input type
     AND?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
@@ -817,6 +985,7 @@ export interface NexusGenInputs {
     OR?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
     password?: NexusGenInputs['StringFilter'] | null; // StringFilter
     posts?: NexusGenInputs['PostListRelationFilter'] | null; // PostListRelationFilter
+    Project?: NexusGenInputs['ProjectListRelationFilter'] | null; // ProjectListRelationFilter
   };
   UserWhereUniqueInput: {
     // input type
@@ -830,6 +999,7 @@ export interface NexusGenEnums {
   GroupDistinctFieldEnum: 'createdAt' | 'id' | 'name' | 'updatedAt';
   KindEnum: 'enum' | 'object' | 'scalar';
   PostDistinctFieldEnum: 'authorId' | 'createdAt' | 'id' | 'published' | 'title' | 'updatedAt';
+  ProjectDistinctFieldEnum: 'createdAt' | 'description' | 'id' | 'ownerId' | 'title' | 'updatedAt';
   SortOrder: 'asc' | 'desc';
   UserDistinctFieldEnum: 'createdAt' | 'email' | 'groupId' | 'id' | 'name' | 'password';
 }
@@ -868,6 +1038,14 @@ export interface NexusGenRootTypes {
     max?: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
     min?: NexusGenRootTypes['PostMinAggregateOutputType'] | null; // PostMinAggregateOutputType
     sum?: NexusGenRootTypes['PostSumAggregateOutputType'] | null; // PostSumAggregateOutputType
+  };
+  AggregateProject: {
+    // root type
+    avg?: NexusGenRootTypes['ProjectAvgAggregateOutputType'] | null; // ProjectAvgAggregateOutputType
+    count: number; // Int!
+    max?: NexusGenRootTypes['ProjectMaxAggregateOutputType'] | null; // ProjectMaxAggregateOutputType
+    min?: NexusGenRootTypes['ProjectMinAggregateOutputType'] | null; // ProjectMinAggregateOutputType
+    sum?: NexusGenRootTypes['ProjectSumAggregateOutputType'] | null; // ProjectSumAggregateOutputType
   };
   AggregateUser: {
     // root type
@@ -1004,6 +1182,35 @@ export interface NexusGenRootTypes {
     authorId?: number | null; // Int
     id: number; // Int!
   };
+  Project: {
+    // root type
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: number; // Int!
+    ownerId?: number | null; // Int
+    title: string; // String!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
+  };
+  ProjectAvgAggregateOutputType: {
+    // root type
+    id: number; // Float!
+    ownerId?: number | null; // Float
+  };
+  ProjectMaxAggregateOutputType: {
+    // root type
+    id: number; // Int!
+    ownerId?: number | null; // Int
+  };
+  ProjectMinAggregateOutputType: {
+    // root type
+    id: number; // Int!
+    ownerId?: number | null; // Int
+  };
+  ProjectSumAggregateOutputType: {
+    // root type
+    id: number; // Int!
+    ownerId?: number | null; // Int
+  };
   Query: {};
   Schema: {
     // root type
@@ -1111,6 +1318,22 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   PostUpsertWithoutCommentsInput: NexusGenInputs['PostUpsertWithoutCommentsInput'];
   PostWhereInput: NexusGenInputs['PostWhereInput'];
   PostWhereUniqueInput: NexusGenInputs['PostWhereUniqueInput'];
+  ProjectCreateInput: NexusGenInputs['ProjectCreateInput'];
+  ProjectCreateManyWithoutOwnerInput: NexusGenInputs['ProjectCreateManyWithoutOwnerInput'];
+  ProjectCreateWithoutOwnerInput: NexusGenInputs['ProjectCreateWithoutOwnerInput'];
+  ProjectListRelationFilter: NexusGenInputs['ProjectListRelationFilter'];
+  ProjectOrderByInput: NexusGenInputs['ProjectOrderByInput'];
+  ProjectScalarWhereInput: NexusGenInputs['ProjectScalarWhereInput'];
+  ProjectUpdateInput: NexusGenInputs['ProjectUpdateInput'];
+  ProjectUpdateManyDataInput: NexusGenInputs['ProjectUpdateManyDataInput'];
+  ProjectUpdateManyMutationInput: NexusGenInputs['ProjectUpdateManyMutationInput'];
+  ProjectUpdateManyWithWhereNestedInput: NexusGenInputs['ProjectUpdateManyWithWhereNestedInput'];
+  ProjectUpdateManyWithoutOwnerInput: NexusGenInputs['ProjectUpdateManyWithoutOwnerInput'];
+  ProjectUpdateWithWhereUniqueWithoutOwnerInput: NexusGenInputs['ProjectUpdateWithWhereUniqueWithoutOwnerInput'];
+  ProjectUpdateWithoutOwnerDataInput: NexusGenInputs['ProjectUpdateWithoutOwnerDataInput'];
+  ProjectUpsertWithWhereUniqueWithoutOwnerInput: NexusGenInputs['ProjectUpsertWithWhereUniqueWithoutOwnerInput'];
+  ProjectWhereInput: NexusGenInputs['ProjectWhereInput'];
+  ProjectWhereUniqueInput: NexusGenInputs['ProjectWhereUniqueInput'];
   StringFieldUpdateOperationsInput: NexusGenInputs['StringFieldUpdateOperationsInput'];
   StringFilter: NexusGenInputs['StringFilter'];
   StringNullableFilter: NexusGenInputs['StringNullableFilter'];
@@ -1120,9 +1343,11 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   UserCreateManyWithoutGroupInput: NexusGenInputs['UserCreateManyWithoutGroupInput'];
   UserCreateOneWithoutCommentsInput: NexusGenInputs['UserCreateOneWithoutCommentsInput'];
   UserCreateOneWithoutPostsInput: NexusGenInputs['UserCreateOneWithoutPostsInput'];
+  UserCreateOneWithoutProjectInput: NexusGenInputs['UserCreateOneWithoutProjectInput'];
   UserCreateWithoutCommentsInput: NexusGenInputs['UserCreateWithoutCommentsInput'];
   UserCreateWithoutGroupInput: NexusGenInputs['UserCreateWithoutGroupInput'];
   UserCreateWithoutPostsInput: NexusGenInputs['UserCreateWithoutPostsInput'];
+  UserCreateWithoutProjectInput: NexusGenInputs['UserCreateWithoutProjectInput'];
   UserListRelationFilter: NexusGenInputs['UserListRelationFilter'];
   UserOrderByInput: NexusGenInputs['UserOrderByInput'];
   UserRelationFilter: NexusGenInputs['UserRelationFilter'];
@@ -1134,19 +1359,23 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   UserUpdateManyWithoutGroupInput: NexusGenInputs['UserUpdateManyWithoutGroupInput'];
   UserUpdateOneWithoutCommentsInput: NexusGenInputs['UserUpdateOneWithoutCommentsInput'];
   UserUpdateOneWithoutPostsInput: NexusGenInputs['UserUpdateOneWithoutPostsInput'];
+  UserUpdateOneWithoutProjectInput: NexusGenInputs['UserUpdateOneWithoutProjectInput'];
   UserUpdateWithWhereUniqueWithoutGroupInput: NexusGenInputs['UserUpdateWithWhereUniqueWithoutGroupInput'];
   UserUpdateWithoutCommentsDataInput: NexusGenInputs['UserUpdateWithoutCommentsDataInput'];
   UserUpdateWithoutGroupDataInput: NexusGenInputs['UserUpdateWithoutGroupDataInput'];
   UserUpdateWithoutPostsDataInput: NexusGenInputs['UserUpdateWithoutPostsDataInput'];
+  UserUpdateWithoutProjectDataInput: NexusGenInputs['UserUpdateWithoutProjectDataInput'];
   UserUpsertWithWhereUniqueWithoutGroupInput: NexusGenInputs['UserUpsertWithWhereUniqueWithoutGroupInput'];
   UserUpsertWithoutCommentsInput: NexusGenInputs['UserUpsertWithoutCommentsInput'];
   UserUpsertWithoutPostsInput: NexusGenInputs['UserUpsertWithoutPostsInput'];
+  UserUpsertWithoutProjectInput: NexusGenInputs['UserUpsertWithoutProjectInput'];
   UserWhereInput: NexusGenInputs['UserWhereInput'];
   UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
   CommentDistinctFieldEnum: NexusGenEnums['CommentDistinctFieldEnum'];
   GroupDistinctFieldEnum: NexusGenEnums['GroupDistinctFieldEnum'];
   KindEnum: NexusGenEnums['KindEnum'];
   PostDistinctFieldEnum: NexusGenEnums['PostDistinctFieldEnum'];
+  ProjectDistinctFieldEnum: NexusGenEnums['ProjectDistinctFieldEnum'];
   SortOrder: NexusGenEnums['SortOrder'];
   UserDistinctFieldEnum: NexusGenEnums['UserDistinctFieldEnum'];
   String: NexusGenScalars['String'];
@@ -1182,6 +1411,14 @@ export interface NexusGenFieldTypes {
     max: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
     min: NexusGenRootTypes['PostMinAggregateOutputType'] | null; // PostMinAggregateOutputType
     sum: NexusGenRootTypes['PostSumAggregateOutputType'] | null; // PostSumAggregateOutputType
+  };
+  AggregateProject: {
+    // field return type
+    avg: NexusGenRootTypes['ProjectAvgAggregateOutputType'] | null; // ProjectAvgAggregateOutputType
+    count: number; // Int!
+    max: NexusGenRootTypes['ProjectMaxAggregateOutputType'] | null; // ProjectMaxAggregateOutputType
+    min: NexusGenRootTypes['ProjectMinAggregateOutputType'] | null; // ProjectMinAggregateOutputType
+    sum: NexusGenRootTypes['ProjectSumAggregateOutputType'] | null; // ProjectSumAggregateOutputType
   };
   AggregateUser: {
     // field return type
@@ -1296,14 +1533,17 @@ export interface NexusGenFieldTypes {
     createOneComment: NexusGenRootTypes['Comment']; // Comment!
     createOneGroup: NexusGenRootTypes['Group']; // Group!
     createOnePost: NexusGenRootTypes['Post']; // Post!
+    createOneProject: NexusGenRootTypes['Project']; // Project!
     createOneUser: NexusGenRootTypes['User']; // User!
     deleteManyComment: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     deleteManyGroup: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     deleteManyPost: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
+    deleteManyProject: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     deleteManyUser: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     deleteOneComment: NexusGenRootTypes['Comment'] | null; // Comment
     deleteOneGroup: NexusGenRootTypes['Group'] | null; // Group
     deleteOnePost: NexusGenRootTypes['Post'] | null; // Post
+    deleteOneProject: NexusGenRootTypes['Project'] | null; // Project
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
     login: NexusGenRootTypes['User'] | null; // User
     logout: boolean | null; // Boolean
@@ -1312,16 +1552,19 @@ export interface NexusGenFieldTypes {
     updateManyComment: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     updateManyGroup: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     updateManyPost: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
+    updateManyProject: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     updateManyUser: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
     updateModel: NexusGenRootTypes['Model'] | null; // Model
     updateOneComment: NexusGenRootTypes['Comment']; // Comment!
     updateOneGroup: NexusGenRootTypes['Group']; // Group!
     updateOnePost: NexusGenRootTypes['Post']; // Post!
+    updateOneProject: NexusGenRootTypes['Project']; // Project!
     updateOneUser: NexusGenRootTypes['User']; // User!
     updatePassword: boolean | null; // Boolean
     upsertOneComment: NexusGenRootTypes['Comment']; // Comment!
     upsertOneGroup: NexusGenRootTypes['Group']; // Group!
     upsertOnePost: NexusGenRootTypes['Post']; // Post!
+    upsertOneProject: NexusGenRootTypes['Project']; // Project!
     upsertOneUser: NexusGenRootTypes['User']; // User!
   };
   Post: {
@@ -1355,15 +1598,47 @@ export interface NexusGenFieldTypes {
     authorId: number | null; // Int
     id: number; // Int!
   };
+  Project: {
+    // field return type
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: number; // Int!
+    owner: NexusGenRootTypes['User'] | null; // User
+    ownerId: number | null; // Int
+    title: string; // String!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
+  };
+  ProjectAvgAggregateOutputType: {
+    // field return type
+    id: number; // Float!
+    ownerId: number | null; // Float
+  };
+  ProjectMaxAggregateOutputType: {
+    // field return type
+    id: number; // Int!
+    ownerId: number | null; // Int
+  };
+  ProjectMinAggregateOutputType: {
+    // field return type
+    id: number; // Int!
+    ownerId: number | null; // Int
+  };
+  ProjectSumAggregateOutputType: {
+    // field return type
+    id: number; // Int!
+    ownerId: number | null; // Int
+  };
   Query: {
     // field return type
     aggregateComment: NexusGenRootTypes['AggregateComment'] | null; // AggregateComment
     aggregateGroup: NexusGenRootTypes['AggregateGroup'] | null; // AggregateGroup
     aggregatePost: NexusGenRootTypes['AggregatePost'] | null; // AggregatePost
+    aggregateProject: NexusGenRootTypes['AggregateProject'] | null; // AggregateProject
     aggregateUser: NexusGenRootTypes['AggregateUser'] | null; // AggregateUser
     findFirstComment: Array<NexusGenRootTypes['Comment'] | null> | null; // [Comment]
     findFirstGroup: Array<NexusGenRootTypes['Group'] | null> | null; // [Group]
     findFirstPost: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
+    findFirstProject: Array<NexusGenRootTypes['Project'] | null> | null; // [Project]
     findFirstUser: Array<NexusGenRootTypes['User'] | null> | null; // [User]
     findManyComment: Array<NexusGenRootTypes['Comment'] | null> | null; // [Comment]
     findManyCommentCount: number | null; // Int
@@ -1371,11 +1646,14 @@ export interface NexusGenFieldTypes {
     findManyGroupCount: number | null; // Int
     findManyPost: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
     findManyPostCount: number | null; // Int
+    findManyProject: Array<NexusGenRootTypes['Project'] | null> | null; // [Project]
+    findManyProjectCount: number | null; // Int
     findManyUser: Array<NexusGenRootTypes['User'] | null> | null; // [User]
     findManyUserCount: number | null; // Int
     findOneComment: NexusGenRootTypes['Comment'] | null; // Comment
     findOneGroup: NexusGenRootTypes['Group'] | null; // Group
     findOnePost: NexusGenRootTypes['Post'] | null; // Post
+    findOneProject: NexusGenRootTypes['Project'] | null; // Project
     findOneUser: NexusGenRootTypes['User'] | null; // User
     getSchema: NexusGenRootTypes['Schema'] | null; // Schema
     me: NexusGenRootTypes['User'] | null; // User
@@ -1396,6 +1674,7 @@ export interface NexusGenFieldTypes {
     name: string | null; // String
     password: string; // String!
     posts: NexusGenRootTypes['Post'][]; // [Post!]!
+    Project: NexusGenRootTypes['Project'][]; // [Project!]!
   };
   UserAvgAggregateOutputType: {
     // field return type
@@ -1444,6 +1723,10 @@ export interface NexusGenArgTypes {
       // args
       data: NexusGenInputs['PostCreateInput']; // PostCreateInput!
     };
+    createOneProject: {
+      // args
+      data: NexusGenInputs['ProjectCreateInput']; // ProjectCreateInput!
+    };
     createOneUser: {
       // args
       data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
@@ -1460,6 +1743,10 @@ export interface NexusGenArgTypes {
       // args
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     };
+    deleteManyProject: {
+      // args
+      where?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+    };
     deleteManyUser: {
       // args
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
@@ -1475,6 +1762,10 @@ export interface NexusGenArgTypes {
     deleteOnePost: {
       // args
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    };
+    deleteOneProject: {
+      // args
+      where: NexusGenInputs['ProjectWhereUniqueInput']; // ProjectWhereUniqueInput!
     };
     deleteOneUser: {
       // args
@@ -1512,6 +1803,11 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['PostUpdateManyMutationInput']; // PostUpdateManyMutationInput!
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     };
+    updateManyProject: {
+      // args
+      data: NexusGenInputs['ProjectUpdateManyMutationInput']; // ProjectUpdateManyMutationInput!
+      where?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+    };
     updateManyUser: {
       // args
       data: NexusGenInputs['UserUpdateManyMutationInput']; // UserUpdateManyMutationInput!
@@ -1536,6 +1832,11 @@ export interface NexusGenArgTypes {
       // args
       data: NexusGenInputs['PostUpdateInput']; // PostUpdateInput!
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    };
+    updateOneProject: {
+      // args
+      data: NexusGenInputs['ProjectUpdateInput']; // ProjectUpdateInput!
+      where: NexusGenInputs['ProjectWhereUniqueInput']; // ProjectWhereUniqueInput!
     };
     updateOneUser: {
       // args
@@ -1564,6 +1865,12 @@ export interface NexusGenArgTypes {
       create: NexusGenInputs['PostCreateInput']; // PostCreateInput!
       update: NexusGenInputs['PostUpdateInput']; // PostUpdateInput!
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    };
+    upsertOneProject: {
+      // args
+      create: NexusGenInputs['ProjectCreateInput']; // ProjectCreateInput!
+      update: NexusGenInputs['ProjectUpdateInput']; // ProjectUpdateInput!
+      where: NexusGenInputs['ProjectWhereUniqueInput']; // ProjectWhereUniqueInput!
     };
     upsertOneUser: {
       // args
@@ -1611,6 +1918,15 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     };
+    aggregateProject: {
+      // args
+      cursor?: NexusGenInputs['ProjectWhereUniqueInput'] | null; // ProjectWhereUniqueInput
+      distinct?: NexusGenEnums['ProjectDistinctFieldEnum'] | null; // ProjectDistinctFieldEnum
+      orderBy?: Array<NexusGenInputs['ProjectOrderByInput'] | null> | null; // [ProjectOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+    };
     aggregateUser: {
       // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -1646,6 +1962,15 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    };
+    findFirstProject: {
+      // args
+      cursor?: NexusGenInputs['ProjectWhereUniqueInput'] | null; // ProjectWhereUniqueInput
+      distinct?: NexusGenEnums['ProjectDistinctFieldEnum'] | null; // ProjectDistinctFieldEnum
+      orderBy?: Array<NexusGenInputs['ProjectOrderByInput'] | null> | null; // [ProjectOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
     };
     findFirstUser: {
       // args
@@ -1710,6 +2035,24 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     };
+    findManyProject: {
+      // args
+      cursor?: NexusGenInputs['ProjectWhereUniqueInput'] | null; // ProjectWhereUniqueInput
+      distinct?: NexusGenEnums['ProjectDistinctFieldEnum'] | null; // ProjectDistinctFieldEnum
+      orderBy?: Array<NexusGenInputs['ProjectOrderByInput'] | null> | null; // [ProjectOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+    };
+    findManyProjectCount: {
+      // args
+      cursor?: NexusGenInputs['ProjectWhereUniqueInput'] | null; // ProjectWhereUniqueInput
+      distinct?: NexusGenEnums['ProjectDistinctFieldEnum'] | null; // ProjectDistinctFieldEnum
+      orderBy?: Array<NexusGenInputs['ProjectOrderByInput'] | null> | null; // [ProjectOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+    };
     findManyUser: {
       // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -1740,6 +2083,10 @@ export interface NexusGenArgTypes {
       // args
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
     };
+    findOneProject: {
+      // args
+      where: NexusGenInputs['ProjectWhereUniqueInput']; // ProjectWhereUniqueInput!
+    };
     findOneUser: {
       // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
@@ -1764,6 +2111,15 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     };
+    Project: {
+      // args
+      cursor?: NexusGenInputs['ProjectWhereUniqueInput'] | null; // ProjectWhereUniqueInput
+      distinct?: NexusGenEnums['ProjectDistinctFieldEnum'] | null; // ProjectDistinctFieldEnum
+      orderBy?: NexusGenInputs['ProjectOrderByInput'] | null; // ProjectOrderByInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ProjectWhereInput'] | null; // ProjectWhereInput
+    };
   };
 }
 
@@ -1775,6 +2131,7 @@ export type NexusGenObjectNames =
   | 'AggregateComment'
   | 'AggregateGroup'
   | 'AggregatePost'
+  | 'AggregateProject'
   | 'AggregateUser'
   | 'BatchPayload'
   | 'Comment'
@@ -1796,6 +2153,11 @@ export type NexusGenObjectNames =
   | 'PostMaxAggregateOutputType'
   | 'PostMinAggregateOutputType'
   | 'PostSumAggregateOutputType'
+  | 'Project'
+  | 'ProjectAvgAggregateOutputType'
+  | 'ProjectMaxAggregateOutputType'
+  | 'ProjectMinAggregateOutputType'
+  | 'ProjectSumAggregateOutputType'
   | 'Query'
   | 'Schema'
   | 'User'
@@ -1874,6 +2236,22 @@ export type NexusGenInputNames =
   | 'PostUpsertWithoutCommentsInput'
   | 'PostWhereInput'
   | 'PostWhereUniqueInput'
+  | 'ProjectCreateInput'
+  | 'ProjectCreateManyWithoutOwnerInput'
+  | 'ProjectCreateWithoutOwnerInput'
+  | 'ProjectListRelationFilter'
+  | 'ProjectOrderByInput'
+  | 'ProjectScalarWhereInput'
+  | 'ProjectUpdateInput'
+  | 'ProjectUpdateManyDataInput'
+  | 'ProjectUpdateManyMutationInput'
+  | 'ProjectUpdateManyWithWhereNestedInput'
+  | 'ProjectUpdateManyWithoutOwnerInput'
+  | 'ProjectUpdateWithWhereUniqueWithoutOwnerInput'
+  | 'ProjectUpdateWithoutOwnerDataInput'
+  | 'ProjectUpsertWithWhereUniqueWithoutOwnerInput'
+  | 'ProjectWhereInput'
+  | 'ProjectWhereUniqueInput'
   | 'StringFieldUpdateOperationsInput'
   | 'StringFilter'
   | 'StringNullableFilter'
@@ -1883,9 +2261,11 @@ export type NexusGenInputNames =
   | 'UserCreateManyWithoutGroupInput'
   | 'UserCreateOneWithoutCommentsInput'
   | 'UserCreateOneWithoutPostsInput'
+  | 'UserCreateOneWithoutProjectInput'
   | 'UserCreateWithoutCommentsInput'
   | 'UserCreateWithoutGroupInput'
   | 'UserCreateWithoutPostsInput'
+  | 'UserCreateWithoutProjectInput'
   | 'UserListRelationFilter'
   | 'UserOrderByInput'
   | 'UserRelationFilter'
@@ -1897,13 +2277,16 @@ export type NexusGenInputNames =
   | 'UserUpdateManyWithoutGroupInput'
   | 'UserUpdateOneWithoutCommentsInput'
   | 'UserUpdateOneWithoutPostsInput'
+  | 'UserUpdateOneWithoutProjectInput'
   | 'UserUpdateWithWhereUniqueWithoutGroupInput'
   | 'UserUpdateWithoutCommentsDataInput'
   | 'UserUpdateWithoutGroupDataInput'
   | 'UserUpdateWithoutPostsDataInput'
+  | 'UserUpdateWithoutProjectDataInput'
   | 'UserUpsertWithWhereUniqueWithoutGroupInput'
   | 'UserUpsertWithoutCommentsInput'
   | 'UserUpsertWithoutPostsInput'
+  | 'UserUpsertWithoutProjectInput'
   | 'UserWhereInput'
   | 'UserWhereUniqueInput';
 
@@ -1912,6 +2295,7 @@ export type NexusGenEnumNames =
   | 'GroupDistinctFieldEnum'
   | 'KindEnum'
   | 'PostDistinctFieldEnum'
+  | 'ProjectDistinctFieldEnum'
   | 'SortOrder'
   | 'UserDistinctFieldEnum';
 

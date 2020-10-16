@@ -48,5 +48,21 @@ export const User = objectType({
         return parent['comments']
       },
     })
+    t.field('Project', {
+      nullable: false,
+      list: [true],
+      type: 'Project',
+      args: {
+        where: 'ProjectWhereInput',
+        orderBy: 'ProjectOrderByInput',
+        cursor: 'ProjectWhereUniqueInput',
+        take: 'Int',
+        skip: 'Int',
+        distinct: 'ProjectDistinctFieldEnum',
+      },
+      resolve(parent: any) {
+        return parent['Project']
+      },
+    })
   },
 })
