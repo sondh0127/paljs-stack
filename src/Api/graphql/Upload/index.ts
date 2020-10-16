@@ -36,18 +36,17 @@ export const UploadQueries = extendType({
   },
 })
 
-const singleUpload = async (createReadStream: any, filename: any) => {
+const singleUpload = async (createReadStream: any, filename: string) => {
   const fileStream = createReadStream()
-
+  const fileName = filename.substr(0, filename.lastIndexOf('.'))
+  const fileExtension = filename.substr(filename.lastIndexOf('.') + 1)
   const { Location } = await s3Bucket
     .upload({
       Bucket: process.env.DESTINATION_BUCKET_NAME || 'sondh0127',
-      Key: `${uuidV4()}-${filename}`,
+      Key: `${fileName}-${uuidV4()}.${fileExtension}`,
       Body: fileStream,
     })
     .promise()
-
-  // Get the link representing the uploaded file
 
   console.log(Location)
 
@@ -66,9 +65,8 @@ export const UploadMutations = extendType({
         }),
       },
       resolve: async (_parent, { file }, ctx) => {
-        const { createReadStream, filename, mimetype, encoding } = await file
+        const { createReadStream, filename } = await file
         const uploadedFile = await singleUpload(createReadStream, filename)
-
         return {
           filename,
           uri: uploadedFile,
