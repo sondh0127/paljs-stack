@@ -19,4 +19,5 @@ export const schema = makeSchema({
     ],
     contextType: 'Context.Context',
   },
+  prettierConfig: join(process.cwd(), '.prettierrc.js'),
 })

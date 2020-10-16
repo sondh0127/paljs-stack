@@ -3,7 +3,6 @@ import { arg, asNexusMethod, extendType, objectType } from '@nexus/schema'
 import { GraphQLUpload } from 'apollo-server-micro'
 import { v4 as uuidV4 } from 'uuid'
 
-console.log(`🇻🇳 [LOG]: process.env.MINIO_END_POINT`, process.env.MINIO_END_POINT)
 const s3Bucket = new AWS.S3({
   endpoint: process.env.MINIO_END_POINT,
   accessKeyId: process.env.ACCESS_KEY_ID,
