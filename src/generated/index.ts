@@ -981,6 +981,10 @@ export type Query = {
   aggregateGroup?: Maybe<AggregateGroup>;
   aggregatePost?: Maybe<AggregatePost>;
   aggregateUser?: Maybe<AggregateUser>;
+  findFirstComment?: Maybe<Array<Maybe<Comment>>>;
+  findFirstGroup?: Maybe<Array<Maybe<Group>>>;
+  findFirstPost?: Maybe<Array<Maybe<Post>>>;
+  findFirstUser?: Maybe<Array<Maybe<User>>>;
   findManyComment?: Maybe<Array<Maybe<Comment>>>;
   findManyCommentCount?: Maybe<Scalars['Int']>;
   findManyGroup?: Maybe<Array<Maybe<Group>>>;
@@ -1029,6 +1033,46 @@ export type QueryAggregatePostArgs = {
 
 
 export type QueryAggregateUserArgs = {
+  cursor?: Maybe<UserWhereUniqueInput>;
+  distinct?: Maybe<UserDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<UserOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<UserWhereInput>;
+};
+
+
+export type QueryFindFirstCommentArgs = {
+  cursor?: Maybe<CommentWhereUniqueInput>;
+  distinct?: Maybe<CommentDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<CommentOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<CommentWhereInput>;
+};
+
+
+export type QueryFindFirstGroupArgs = {
+  cursor?: Maybe<GroupWhereUniqueInput>;
+  distinct?: Maybe<GroupDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<GroupOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<GroupWhereInput>;
+};
+
+
+export type QueryFindFirstPostArgs = {
+  cursor?: Maybe<PostWhereUniqueInput>;
+  distinct?: Maybe<PostDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<PostOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<PostWhereInput>;
+};
+
+
+export type QueryFindFirstUserArgs = {
   cursor?: Maybe<UserWhereUniqueInput>;
   distinct?: Maybe<UserDistinctFieldEnum>;
   orderBy?: Maybe<Array<Maybe<UserOrderByInput>>>;

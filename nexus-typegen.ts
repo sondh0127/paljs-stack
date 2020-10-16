@@ -11,11 +11,16 @@ declare global {
       fieldName: FieldName,
       opts?: core.ScalarInputFieldConfig<core.GetGen3<'inputTypes', TypeName, FieldName>>,
     ): void; // "Json";
+    date<FieldName extends string>(
+      fieldName: FieldName,
+      opts?: core.ScalarInputFieldConfig<core.GetGen3<'inputTypes', TypeName, FieldName>>,
+    ): void; // "DateTime";
   }
 }
 declare global {
   interface NexusGenCustomOutputMethods<TypeName extends string> {
     json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void; // "Json";
+    date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void; // "DateTime";
   }
 }
 
@@ -1356,6 +1361,10 @@ export interface NexusGenFieldTypes {
     aggregateGroup: NexusGenRootTypes['AggregateGroup'] | null; // AggregateGroup
     aggregatePost: NexusGenRootTypes['AggregatePost'] | null; // AggregatePost
     aggregateUser: NexusGenRootTypes['AggregateUser'] | null; // AggregateUser
+    findFirstComment: Array<NexusGenRootTypes['Comment'] | null> | null; // [Comment]
+    findFirstGroup: Array<NexusGenRootTypes['Group'] | null> | null; // [Group]
+    findFirstPost: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
+    findFirstUser: Array<NexusGenRootTypes['User'] | null> | null; // [User]
     findManyComment: Array<NexusGenRootTypes['Comment'] | null> | null; // [Comment]
     findManyCommentCount: number | null; // Int
     findManyGroup: Array<NexusGenRootTypes['Group'] | null> | null; // [Group]
@@ -1603,6 +1612,42 @@ export interface NexusGenArgTypes {
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     };
     aggregateUser: {
+      // args
+      cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      distinct?: NexusGenEnums['UserDistinctFieldEnum'] | null; // UserDistinctFieldEnum
+      orderBy?: Array<NexusGenInputs['UserOrderByInput'] | null> | null; // [UserOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    };
+    findFirstComment: {
+      // args
+      cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
+      distinct?: NexusGenEnums['CommentDistinctFieldEnum'] | null; // CommentDistinctFieldEnum
+      orderBy?: Array<NexusGenInputs['CommentOrderByInput'] | null> | null; // [CommentOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
+    };
+    findFirstGroup: {
+      // args
+      cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
+      distinct?: NexusGenEnums['GroupDistinctFieldEnum'] | null; // GroupDistinctFieldEnum
+      orderBy?: Array<NexusGenInputs['GroupOrderByInput'] | null> | null; // [GroupOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
+    };
+    findFirstPost: {
+      // args
+      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
+      distinct?: NexusGenEnums['PostDistinctFieldEnum'] | null; // PostDistinctFieldEnum
+      orderBy?: Array<NexusGenInputs['PostOrderByInput'] | null> | null; // [PostOrderByInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    };
+    findFirstUser: {
       // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       distinct?: NexusGenEnums['UserDistinctFieldEnum'] | null; // UserDistinctFieldEnum

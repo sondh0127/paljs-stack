@@ -760,6 +760,10 @@ type Query {
   aggregateGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): AggregateGroup
   aggregatePost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): AggregatePost
   aggregateUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): AggregateUser
+  findFirstComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment]
+  findFirstGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group]
+  findFirstPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post]
+  findFirstUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User]
   findManyComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment]
   findManyCommentCount(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int
   findManyGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group]
